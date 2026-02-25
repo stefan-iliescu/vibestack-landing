@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VibeStack — Back-Office Software for Independent Merchants</title>
+  <meta name="description" content="VibeStack builds back-office software for small and medium merchants. Enterprise-grade tools, built for everyone else.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0f0f0f;
+      --white: #fafafa;
+      --gray: #6b6b6b;
+      --light: #f0ede8;
+      --accent: #1a1a2e;
+      --border: #e0dbd3;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--white);
+      color: var(--black);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 24px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(250, 250, 250, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+      color: var(--black);
+      text-decoration: none;
+    }
+
+    .nav-link {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--gray);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
+
+    .nav-link:hover { color: var(--black); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 120px 48px 80px;
+      max-width: 1100px;
+      margin: 0 auto;
+      opacity: 0;
+      animation: fadeUp 0.9s ease forwards 0.2s;
+    }
+
+    .hero-tag {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 32px;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(42px, 6vw, 80px);
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      color: var(--black);
+      max-width: 800px;
+      margin-bottom: 32px;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gray);
+    }
+
+    .hero p {
+      font-size: 18px;
+      font-weight: 300;
+      color: var(--gray);
+      max-width: 520px;
+      line-height: 1.7;
+      margin-bottom: 48px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 14px 28px;
+      background: var(--black);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: opacity 0.2s;
+    }
+
+    .btn-primary:hover { opacity: 0.8; }
+
+    .btn-ghost {
+      display: inline-block;
+      padding: 14px 28px;
+      border: 1px solid var(--border);
+      color: var(--black);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: border-color 0.2s;
+    }
+
+    .btn-ghost:hover { border-color: var(--black); }
+
+    /* DIVIDER */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0 48px;
+    }
+
+    /* SECTION */
+    section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 100px 48px;
+    }
+
+    .section-tag {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 48px;
+    }
+
+    /* PROBLEM */
+    .problem-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .problem-grid h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 3.5vw, 44px);
+      font-weight: 600;
+      line-height: 1.2;
+      letter-spacing: -0.5px;
+      color: var(--black);
+    }
+
+    .problem-grid h2 em {
+      font-style: italic;
+      color: var(--gray);
+    }
+
+    .problem-text {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--gray);
+      line-height: 1.8;
+    }
+
+    .problem-text p + p { margin-top: 20px; }
+
+    /* PRODUCT */
+    .product-card {
+      background: var(--light);
+      padding: 64px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards;
+      animation-play-state: paused;
+    }
+
+    .product-card.visible { animation-play-state: running; }
+
+    .product-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 20px;
+    }
+
+    .product-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+      color: var(--black);
+      margin-bottom: 20px;
+    }
+
+    .product-card p {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--gray);
+      line-height: 1.8;
+      margin-bottom: 32px;
+    }
+
+    .feature-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .feature-list li {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--black);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .feature-list li::before {
+      content: '';
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--black);
+      flex-shrink: 0;
+    }
+
+    /* VISION */
+    .vision {
+      text-align: center;
+      padding: 120px 48px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .vision h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 4vw, 56px);
+      font-weight: 600;
+      line-height: 1.2;
+      letter-spacing: -1px;
+      color: var(--black);
+      max-width: 700px;
+      margin: 0 auto 32px;
+    }
+
+    .vision h2 em {
+      font-style: italic;
+      color: var(--gray);
+    }
+
+    .vision p {
+      font-size: 17px;
+      font-weight: 300;
+      color: var(--gray);
+      max-width: 560px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .about-grid h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 3vw, 40px);
+      font-weight: 600;
+      line-height: 1.2;
+      letter-spacing: -0.5px;
+      color: var(--black);
+    }
+
+    .about-text {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--gray);
+      line-height: 1.8;
+    }
+
+    .about-text p + p { margin-top: 20px; }
+
+    /* CONTACT */
+    .contact {
+      background: var(--black);
+      padding: 100px 48px;
+      text-align: center;
+    }
+
+    .contact h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 3.5vw, 48px);
+      font-weight: 600;
+      letter-spacing: -0.5px;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+
+    .contact p {
+      font-size: 16px;
+      font-weight: 300;
+      color: rgba(250,250,250,0.5);
+      margin-bottom: 40px;
+    }
+
+    .contact a.btn-white {
+      display: inline-block;
+      padding: 14px 32px;
+      background: var(--white);
+      color: var(--black);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: opacity 0.2s;
+    }
+
+    .contact a.btn-white:hover { opacity: 0.85; }
+
+    /* FOOTER */
+    footer {
+      padding: 32px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--border);
+    }
+
+    footer .logo { font-size: 18px; }
+
+    footer p {
+      font-size: 13px;
+      color: var(--gray);
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav { padding: 20px 24px; }
+      .hero { padding: 100px 24px 60px; }
+      section { padding: 60px 24px; }
+      .divider { margin: 0 24px; }
+      .problem-grid, .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .product-card { grid-template-columns: 1fr; padding: 40px 24px; gap: 40px; }
+      .vision { padding: 80px 24px; }
+      .contact { padding: 80px 24px; }
+      footer { padding: 24px; flex-direction: column; gap: 12px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="logo">VibeStack</a>
+    <a href="mailto:tstefan.iliescu@gmail.com" class="nav-link">Get in touch</a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <p class="hero-tag">Back-office software for independent merchants</p>
+    <h1>Enterprise tools,<br>built for <em>everyone else.</em></h1>
+    <p>Small and medium merchants run the backbone of every economy. They deserve software built with the same rigor typically reserved for the largest companies in the world.</p>
+    <div class="hero-actions">
+      <a href="https://apps.shopify.com" class="btn-primary">Browse our apps</a>
+      <a href="mailto:tstefan.iliescu@gmail.com" class="btn-ghost">Get in touch</a>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- PROBLEM -->
+  <section class="fade-in">
+    <p class="section-tag">The problem</p>
+    <div class="problem-grid">
+      <h2>Enterprise got the<br>polished tools.<br><em>Everyone else<br>got spreadsheets.</em></h2>
+      <div class="problem-text">
+        <p>For decades, back-office software has been built for companies with dedicated operations teams, six-figure budgets, and months to implement. Small merchants were an afterthought.</p>
+        <p>The operational complexity doesn't disappear because you're smaller. If anything, it's harder. You have less margin for error and fewer people to absorb it.</p>
+        <p>VibeStack is built from the ground up for merchants running lean teams. Simple to install, immediate value, no implementation project required.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- PRODUCT -->
+  <section class="fade-in">
+    <p class="section-tag">Our first product</p>
+    <div class="product-card">
+      <div>
+        <p class="product-label">Now available on Shopify</p>
+        <h3>Stock Alert</h3>
+        <p>When a product hits zero inventory, the merchant gets an email. No dashboards to check. No manual monitoring. Just the right information at the right time.</p>
+        <a href="https://apps.shopify.com" class="btn-primary">Install on Shopify</a>
+      </div>
+      <ul class="feature-list">
+        <li>Instant email alerts when any product hits zero</li>
+        <li>Variant-level alerts include size and color</li>
+        <li>Automatic detection, no setup required</li>
+        <li>Works silently in the background, always on</li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- VISION -->
+  <div class="vision fade-in">
+    <p class="section-tag">Where we're going</p>
+    <h2>Alerts are just the<br><em>beginning.</em></h2>
+    <p>The roadmap goes well beyond notifications. Forecasting, pattern recognition, decision support. The kind of analytical capability that large enterprises pay millions for, made accessible to a merchant running a team of five.</p>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ABOUT -->
+  <section class="fade-in">
+    <p class="section-tag">About</p>
+    <div class="about-grid">
+      <h2>Built by someone who has been in the room.</h2>
+      <div class="about-text">
+        <p>VibeStack was founded after a decade working at the intersection of product, operations, and emerging technology — including three years at venture-backed companies serving SMBs.</p>
+        <p>What became clear is that the tools merchants need most are rarely the ones being built. VibeStack exists to close that gap.</p>
+        <p>We're at the beginning. If you're a merchant, an operator, or an investor who believes SMBs deserve better software, we'd love to hear from you.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <div class="contact">
+    <h2>Let's talk.</h2>
+    <p>Merchants, operators, investors — all welcome.</p>
+    <a href="mailto:tstefan.iliescu@gmail.com" class="btn-white">tstefan.iliescu@gmail.com</a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <a href="/" class="logo">VibeStack</a>
+    <p>&copy; 2026 VibeStack. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(el => {
+        if (el.isIntersecting) {
+          el.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
