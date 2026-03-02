@@ -15,7 +15,7 @@
       --white: #fafafa;
       --gray: #6b6b6b;
       --light: #f0ede8;
-      --purple: #7C3AED;
+      --purple: #6B46C1;
       --border: #e0dbd3;
     }
 
@@ -330,7 +330,7 @@
 
   <nav>
     <a href="/" class="logo">VibeStack</a>
-    <a href="/cdn-cgi/l/email-protection#deadaabbb8bfb09ea8b7bcbbadaabfbdb5bfaeaef0bdb1b3" class="nav-link">Get in touch</a>
+    <a href="mailto:stefan@vibestackapp.com" class="nav-link">Get in touch</a>
   </nav>
 
   <div class="hero">
@@ -339,7 +339,7 @@
     <p>Small and medium merchants run the backbone of every economy. They deserve software built with the same rigor typically reserved for the largest companies in the world.</p>
     <div class="hero-actions">
       <a href="https://apps.shopify.com" class="btn-primary">Browse our apps</a>
-      <a href="/cdn-cgi/l/email-protection#88fbfcedeee9e6c8fee1eaedfbfce9ebe3e9f8f8a6ebe7e5" class="btn-ghost">Get in touch</a>
+      <a href="mailto:stefan@vibestackapp.com" class="btn-ghost">Get in touch</a>
     </div>
   </div>
 
@@ -402,7 +402,7 @@
   <div class="contact">
     <h2>Let's talk.</h2>
     <p>Merchants, operators, investors — all welcome.</p>
-    <a href="/cdn-cgi/l/email-protection#84f7f0e1e2e5eac4f2ede6e1f7f0e5e7efe5f4f4aae7ebe9" class="btn-white"><span class="__cf_email__" data-cfemail="1566617073747b55637c7770666174767e7465653b767a78">[email&#160;protected]</span></a>
+    <a href="mailto:stefan@vibestackapp.com" class="btn-white">stefan@vibestackapp.com</a>
   </div>
 
   <footer>
@@ -410,4 +410,15 @@
     <p>&copy; 2026 VibeStack. All rights reserved.</p>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/e
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(el => {
+        if (el.isIntersecting) el.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
