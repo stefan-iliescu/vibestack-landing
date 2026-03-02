@@ -15,7 +15,8 @@
       --white: #fafafa;
       --gray: #6b6b6b;
       --light: #f0ede8;
-      --accent: #1a1a2e;
+      --accent: #6B46C1;
+      --purple: #6B46C1;
       --border: #e0dbd3;
     }
 
@@ -169,7 +170,7 @@
       font-weight: 500;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--gray);
+      color: var(--purple);
       margin-bottom: 48px;
     }
 
@@ -224,7 +225,7 @@
       font-weight: 500;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--gray);
+      color: var(--purple);
       margin-bottom: 20px;
     }
 
@@ -243,6 +244,10 @@
       color: var(--gray);
       line-height: 1.8;
       margin-bottom: 32px;
+    }
+
+    .product-card .btn-primary {
+      background: var(--purple);
     }
 
     .feature-list {
@@ -266,7 +271,7 @@
       width: 4px;
       height: 4px;
       border-radius: 50%;
-      background: var(--black);
+      background: var(--purple);
       flex-shrink: 0;
     }
 
@@ -506,7 +511,6 @@
   </footer>
 
   <script>
-    // Scroll animations
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(el => {
         if (el.isIntersecting) {
