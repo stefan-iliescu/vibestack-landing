@@ -70,7 +70,6 @@
       padding: 120px 48px 80px;
       max-width: 1100px;
       margin: 0 auto;
-      opacity: 0;
       animation: fadeUp 0.9s ease forwards 0.2s;
     }
 
@@ -118,6 +117,8 @@
       text-decoration: none;
       letter-spacing: 0.02em;
       transition: opacity 0.2s;
+      border: none;
+      cursor: pointer;
     }
 
     .btn-primary:hover { opacity: 0.8; }
@@ -201,8 +202,6 @@
       margin-bottom: 32px;
     }
 
-    .product-card .btn-primary { background: var(--purple); }
-
     .feature-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
 
     .feature-list li {
@@ -221,6 +220,77 @@
       border-radius: 50%;
       background: var(--purple);
       flex-shrink: 0;
+    }
+
+    /* WAITLIST */
+    .waitlist {
+      background: var(--light);
+      padding: 80px 48px;
+      text-align: center;
+    }
+
+    .waitlist h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 3vw, 40px);
+      font-weight: 600;
+      letter-spacing: -0.5px;
+      color: var(--black);
+      margin-bottom: 16px;
+    }
+
+    .waitlist p {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--gray);
+      margin-bottom: 40px;
+    }
+
+    .waitlist-form {
+      display: flex;
+      gap: 0;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .waitlist-form input[type="email"] {
+      flex: 1;
+      padding: 14px 20px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      border: 1px solid var(--border);
+      border-right: none;
+      background: var(--white);
+      color: var(--black);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .waitlist-form input[type="email"]:focus { border-color: var(--purple); }
+    .waitlist-form input[type="email"]::placeholder { color: var(--gray); }
+
+    .waitlist-form button {
+      padding: 14px 28px;
+      background: var(--purple);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      border: none;
+      cursor: pointer;
+      letter-spacing: 0.02em;
+      transition: opacity 0.2s;
+      white-space: nowrap;
+    }
+
+    .waitlist-form button:hover { opacity: 0.85; }
+
+    .waitlist-success {
+      display: none;
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--purple);
+      margin-top: 16px;
     }
 
     .vision { text-align: center; padding: 120px 48px; max-width: 1100px; margin: 0 auto; }
@@ -305,14 +375,6 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-
-    .fade-in.visible { opacity: 1; transform: translateY(0); }
-
     @media (max-width: 768px) {
       nav { padding: 20px 24px; }
       .hero { padding: 100px 24px 60px; }
@@ -321,6 +383,9 @@
       .problem-grid, .about-grid { grid-template-columns: 1fr; gap: 40px; }
       .product-card { grid-template-columns: 1fr; padding: 40px 24px; gap: 40px; }
       .vision { padding: 80px 24px; }
+      .waitlist { padding: 60px 24px; }
+      .waitlist-form { flex-direction: column; }
+      .waitlist-form input[type="email"] { border-right: 1px solid var(--border); border-bottom: none; }
       .contact { padding: 80px 24px; }
       footer { padding: 24px; flex-direction: column; gap: 12px; text-align: center; }
     }
@@ -338,14 +403,14 @@
     <h1>Enterprise tools,<br>built for <em>everyone else.</em></h1>
     <p>Small and medium merchants run the backbone of every economy. They deserve software built with the same rigor typically reserved for the largest companies in the world.</p>
     <div class="hero-actions">
-      <a href="https://apps.shopify.com" class="btn-primary">Browse our apps</a>
+      <a href="#waitlist" class="btn-primary">Join the waitlist</a>
       <a href="mailto:stefan@vibestackapp.com" class="btn-ghost">Get in touch</a>
     </div>
   </div>
 
   <hr class="divider">
 
-  <section class="fade-in">
+  <section>
     <p class="section-tag">The problem</p>
     <div class="problem-grid">
       <h2>Enterprise got the<br>polished tools.<br><em>Everyone else<br>got spreadsheets.</em></h2>
@@ -359,14 +424,14 @@
 
   <hr class="divider">
 
-  <section class="fade-in">
+  <section>
     <p class="section-tag">Our first product</p>
     <div class="product-card">
       <div>
-        <p class="product-label">Now available on Shopify</p>
+        <p class="product-label">Coming soon to Shopify</p>
         <h3>Stock Alert</h3>
         <p>When a product hits zero inventory, the merchant gets an email. No dashboards to check. No manual monitoring. Just the right information at the right time.</p>
-        <a href="https://apps.shopify.com" class="btn-primary">Install on Shopify</a>
+        <a href="#waitlist" class="btn-primary" style="background: var(--purple);">Join the waitlist</a>
       </div>
       <ul class="feature-list">
         <li>Instant email alerts when any product hits zero</li>
@@ -379,7 +444,7 @@
 
   <hr class="divider">
 
-  <div class="vision fade-in">
+  <div class="vision">
     <p class="section-tag">Where we're going</p>
     <h2>Alerts are just the<br><em>beginning.</em></h2>
     <p>The roadmap goes well beyond notifications. Forecasting, pattern recognition, decision support. The kind of analytical capability that large enterprises pay millions for, made accessible to a merchant running a team of five.</p>
@@ -387,7 +452,21 @@
 
   <hr class="divider">
 
-  <section class="fade-in">
+  <!-- WAITLIST -->
+  <div class="waitlist" id="waitlist">
+    <p class="section-tag">Early access</p>
+    <h2>Be the first to know.</h2>
+    <p>Stock Alert is launching on Shopify soon. Join the waitlist and we'll notify you the moment it's live — free to install.</p>
+    <form class="waitlist-form" action="https://formspree.io/f/xojkwgob" method="POST" id="waitlist-form">
+      <input type="email" name="email" placeholder="your@email.com" required>
+      <button type="submit">Join the waitlist</button>
+    </form>
+    <p class="waitlist-success" id="waitlist-success">✓ You're on the list. We'll be in touch soon.</p>
+  </div>
+
+  <hr class="divider">
+
+  <section>
     <p class="section-tag">About</p>
     <div class="about-grid">
       <h2>Built by someone who has been in the room.</h2>
@@ -411,13 +490,22 @@
   </footer>
 
   <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(el => {
-        if (el.isIntersecting) el.target.classList.add('visible');
-      });
-    }, { threshold: 0.1 });
+    const form = document.getElementById('waitlist-form');
+    const success = document.getElementById('waitlist-success');
 
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const data = new FormData(form);
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+      if (response.ok) {
+        form.style.display = 'none';
+        success.style.display = 'block';
+      }
+    });
   </script>
 
 </body>
