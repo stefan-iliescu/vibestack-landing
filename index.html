@@ -202,6 +202,8 @@
       margin-bottom: 32px;
     }
 
+    .product-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+
     .feature-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
 
     .feature-list li {
@@ -222,7 +224,6 @@
       flex-shrink: 0;
     }
 
-    /* WAITLIST */
     .waitlist {
       background: var(--light);
       padding: 80px 48px;
@@ -428,16 +429,20 @@
     <p class="section-tag">Our first product</p>
     <div class="product-card">
       <div>
-        <p class="product-label">Coming soon to Shopify</p>
+        <p class="product-label">Available now for WooCommerce · Coming soon to Shopify</p>
         <h3>Stock Alert</h3>
         <p>When a product hits zero inventory, the merchant gets an email. No dashboards to check. No manual monitoring. Just the right information at the right time.</p>
-        <a href="#waitlist" class="btn-primary" style="background: var(--purple);">Join the waitlist</a>
+        <div class="product-actions">
+          <a href="https://github.com/stefan-iliescu/vibestack-stock-alert/releases/tag/v1.0.0" class="btn-primary" style="background: var(--purple);" target="_blank">Download for WooCommerce</a>
+          <a href="#waitlist" class="btn-ghost">Join Shopify waitlist</a>
+        </div>
       </div>
       <ul class="feature-list">
         <li>Instant email alerts when any product hits zero</li>
         <li>Variant-level alerts include size and color</li>
         <li>Automatic detection, no setup required</li>
         <li>Works silently in the background, always on</li>
+        <li>Free forever</li>
       </ul>
     </div>
   </section>
@@ -452,9 +457,8 @@
 
   <hr class="divider">
 
-  <!-- WAITLIST -->
   <div class="waitlist" id="waitlist">
-    <p class="section-tag">Early access</p>
+    <p class="section-tag">Shopify — Early access</p>
     <h2>Be the first to know.</h2>
     <p>Stock Alert is launching on Shopify soon. Join the waitlist and we'll notify you the moment it's live — free to install.</p>
     <form class="waitlist-form" action="https://formspree.io/f/xojkwgob" method="POST" id="waitlist-form">
