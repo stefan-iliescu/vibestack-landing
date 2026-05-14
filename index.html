@@ -211,7 +211,7 @@
       font-weight: 400;
       color: var(--black);
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 12px;
     }
 
@@ -222,76 +222,11 @@
       border-radius: 50%;
       background: var(--purple);
       flex-shrink: 0;
+      margin-top: 8px;
     }
 
-    .waitlist {
-      background: var(--light);
-      padding: 80px 48px;
-      text-align: center;
-    }
-
-    .waitlist h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(28px, 3vw, 40px);
-      font-weight: 600;
-      letter-spacing: -0.5px;
-      color: var(--black);
-      margin-bottom: 16px;
-    }
-
-    .waitlist p {
-      font-size: 16px;
-      font-weight: 300;
-      color: var(--gray);
-      margin-bottom: 40px;
-    }
-
-    .waitlist-form {
-      display: flex;
-      gap: 0;
-      max-width: 480px;
-      margin: 0 auto;
-    }
-
-    .waitlist-form input[type="email"] {
-      flex: 1;
-      padding: 14px 20px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 14px;
-      font-weight: 400;
-      border: 1px solid var(--border);
-      border-right: none;
-      background: var(--white);
-      color: var(--black);
-      outline: none;
-      transition: border-color 0.2s;
-    }
-
-    .waitlist-form input[type="email"]:focus { border-color: var(--purple); }
-    .waitlist-form input[type="email"]::placeholder { color: var(--gray); }
-
-    .waitlist-form button {
-      padding: 14px 28px;
-      background: var(--purple);
-      color: var(--white);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 14px;
+    .feature-list strong {
       font-weight: 500;
-      border: none;
-      cursor: pointer;
-      letter-spacing: 0.02em;
-      transition: opacity 0.2s;
-      white-space: nowrap;
-    }
-
-    .waitlist-form button:hover { opacity: 0.85; }
-
-    .waitlist-success {
-      display: none;
-      font-size: 15px;
-      font-weight: 400;
-      color: var(--purple);
-      margin-top: 16px;
     }
 
     .vision { text-align: center; padding: 120px 48px; max-width: 1100px; margin: 0 auto; }
@@ -384,9 +319,6 @@
       .problem-grid, .about-grid { grid-template-columns: 1fr; gap: 40px; }
       .product-card { grid-template-columns: 1fr; padding: 40px 24px; gap: 40px; }
       .vision { padding: 80px 24px; }
-      .waitlist { padding: 60px 24px; }
-      .waitlist-form { flex-direction: column; }
-      .waitlist-form input[type="email"] { border-right: 1px solid var(--border); border-bottom: none; }
       .contact { padding: 80px 24px; }
       footer { padding: 24px; flex-direction: column; gap: 12px; text-align: center; }
     }
@@ -404,7 +336,7 @@
     <h1>Enterprise tools,<br>built for <em>everyone else.</em></h1>
     <p>Small and medium merchants run the backbone of every economy. They deserve software built with the same rigor typically reserved for the largest companies in the world.</p>
     <div class="hero-actions">
-      <a href="#waitlist" class="btn-primary">Join the waitlist</a>
+      <a href="https://apps.shopify.com/vibe-stack-ai-back-office" class="btn-primary" target="_blank">Install on Shopify</a>
       <a href="mailto:stefan@vibestackapp.com" class="btn-ghost">Get in touch</a>
     </div>
   </div>
@@ -426,23 +358,24 @@
   <hr class="divider">
 
   <section>
-    <p class="section-tag">Our first product</p>
+    <p class="section-tag">Our first product — Now live on Shopify</p>
     <div class="product-card">
       <div>
-        <p class="product-label">Available now for WooCommerce · Coming soon to Shopify</p>
-        <h3>Stock Alert</h3>
-        <p>When a product hits zero inventory, the merchant gets an email. No dashboards to check. No manual monitoring. Just the right information at the right time.</p>
+        <p class="product-label">Available now on Shopify · $29.99/month</p>
+        <h3>Stockwise by VibeStack</h3>
+        <p>Know what to order, when to order it, and how much. Stockwise turns your Shopify order history into clear inventory decisions — no spreadsheets, no guesswork.</p>
         <div class="product-actions">
-          <a href="https://wordpress.org/plugins/vibestack-stock-alert/" class="btn-primary" style="background: var(--purple);" target="_blank">Download for WooCommerce</a>
-          <a href="#waitlist" class="btn-ghost">Join Shopify waitlist</a>
+          <a href="https://apps.shopify.com/vibe-stack-ai-back-office" class="btn-primary" style="background: var(--purple);" target="_blank">Install on Shopify</a>
         </div>
       </div>
       <ul class="feature-list">
-        <li>Instant email alerts when any product hits zero</li>
-        <li>Variant-level alerts include size and color</li>
-        <li>Automatic detection, no setup required</li>
-        <li>Works silently in the background, always on</li>
-        <li>Free forever</li>
+        <li><span><strong>Stockout predictions</strong> — See exactly how many days of stock remain per product</span></li>
+        <li><span><strong>Demand forecasting</strong> — Get reorder quantities based on lead time and safety stock</span></li>
+        <li><span><strong>Sales trend analysis</strong> — Compare this week vs last week, last month, and last year</span></li>
+        <li><span><strong>Early warning alerts</strong> — Critical (≤7d), Warning (≤30d), and Watch (≤365d) thresholds</span></li>
+        <li><span><strong>Manual sales data</strong> — Add sales from channels not connected to your Shopify store</span></li>
+        <li><span><strong>Email reports</strong> — Get a full inventory forecast as a CSV, on demand</span></li>
+        <li><span><strong>Product exclusions</strong> — Hide discontinued products from your dashboard</span></li>
       </ul>
     </div>
   </section>
@@ -451,21 +384,8 @@
 
   <div class="vision">
     <p class="section-tag">Where we're going</p>
-    <h2>Alerts are just the<br><em>beginning.</em></h2>
-    <p>The roadmap goes well beyond notifications. Forecasting, pattern recognition, decision support. The kind of analytical capability that large enterprises pay millions for, made accessible to a merchant running a team of five.</p>
-  </div>
-
-  <hr class="divider">
-
-  <div class="waitlist" id="waitlist">
-    <p class="section-tag">Shopify — Early access</p>
-    <h2>Be the first to know.</h2>
-    <p>Stock Alert is launching on Shopify soon. Join the waitlist and we'll notify you the moment it's live — free to install.</p>
-    <form class="waitlist-form" action="https://formspree.io/f/xojkwgob" method="POST" id="waitlist-form">
-      <input type="email" name="email" placeholder="your@email.com" required>
-      <button type="submit">Join the waitlist</button>
-    </form>
-    <p class="waitlist-success" id="waitlist-success">✓ You're on the list. We'll be in touch soon.</p>
+    <h2>Stockwise is just the<br><em>beginning.</em></h2>
+    <p>The roadmap goes well beyond inventory management. Forecasting, pattern recognition, decision support. The kind of analytical capability that large enterprises pay millions for, made accessible to a merchant running a team of five.</p>
   </div>
 
   <hr class="divider">
@@ -492,25 +412,6 @@
     <a href="/" class="logo">VibeStack</a>
     <p>&copy; 2026 VibeStack. All rights reserved.</p>
   </footer>
-
-  <script>
-    const form = document.getElementById('waitlist-form');
-    const success = document.getElementById('waitlist-success');
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const data = new FormData(form);
-      const response = await fetch(form.action, {
-        method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' }
-      });
-      if (response.ok) {
-        form.style.display = 'none';
-        success.style.display = 'block';
-      }
-    });
-  </script>
 
 </body>
 </html>
