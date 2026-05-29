@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Calculate Reorder Quantity in Shopify — Free Calculator</title>
+  <meta name="description" content="Learn how to calculate the right reorder quantity for your Shopify products. Free reorder quantity calculator included.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --black: #0f0f0f; --white: #fafafa; --gray: #6b6b6b; --light: #f0ede8; --purple: #7C3AED; --border: #e0dbd3; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--black); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 24px 48px; display: flex; justify-content: space-between; align-items: center; background: rgba(250,250,250,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    .logo { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 600; letter-spacing: -0.5px; color: var(--black); text-decoration: none; }
+    .nav-link { font-size: 14px; color: var(--gray); text-decoration: none; }
+    .page-hero { padding: 160px 48px 80px; max-width: 800px; margin: 0 auto; }
+    .page-hero .tag { font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--purple); margin-bottom: 24px; }
+    .page-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 4.5vw, 52px); font-weight: 600; line-height: 1.1; letter-spacing: -1px; margin-bottom: 24px; }
+    .page-hero p { font-size: 18px; font-weight: 300; color: var(--gray); line-height: 1.7; margin-bottom: 40px; }
+    .btn-primary { display: inline-block; padding: 14px 28px; background: var(--purple); color: var(--white); font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; text-decoration: none; transition: opacity 0.2s; }
+    .btn-primary:hover { opacity: 0.85; }
+    .content { max-width: 800px; margin: 0 auto; padding: 0 48px 100px; }
+    .content h2 { font-family: 'Playfair Display', serif; font-size: clamp(22px, 3vw, 34px); font-weight: 600; letter-spacing: -0.5px; margin: 60px 0 20px; }
+    .content h3 { font-size: 18px; font-weight: 500; margin: 32px 0 12px; }
+    .content p { font-size: 16px; font-weight: 300; color: var(--gray); line-height: 1.8; margin-bottom: 20px; }
+    .content ul { list-style: none; margin-bottom: 20px; }
+    .content ul li { font-size: 16px; font-weight: 300; color: var(--gray); line-height: 1.8; padding-left: 20px; position: relative; margin-bottom: 8px; }
+    .content ul li::before { content: ''; position: absolute; left: 0; top: 11px; width: 4px; height: 4px; border-radius: 50%; background: var(--purple); }
+    .formula { background: var(--light); padding: 24px 32px; margin: 32px 0; font-family: monospace; font-size: 15px; line-height: 1.9; color: var(--black); border-left: 3px solid var(--purple); }
+    .callout { background: var(--light); padding: 28px 32px; margin: 32px 0; border-left: 3px solid var(--purple); }
+    .callout p { margin: 0; font-size: 16px; font-weight: 400; color: var(--black); line-height: 1.7; }
+    .calculator { border: 1px solid var(--border); padding: 48px; margin: 48px 0; }
+    .calculator h3 { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 600; margin-bottom: 8px; }
+    .calculator .subtitle { font-size: 14px; color: var(--gray); margin-bottom: 40px; }
+    .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 32px; }
+    .calc-field { display: flex; flex-direction: column; gap: 6px; }
+    .calc-field label { font-size: 13px; font-weight: 500; color: var(--black); }
+    .calc-field .help { font-size: 12px; color: var(--gray); }
+    .calc-field input { padding: 12px 14px; border: 1px solid var(--border); font-family: 'DM Sans', sans-serif; font-size: 15px; color: var(--black); outline: none; transition: border-color 0.2s; -moz-appearance: textfield; }
+    .calc-field input::-webkit-outer-spin-button,
+    .calc-field input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+    .calc-field input:focus { border-color: var(--purple); }
+    .calc-divider { border: none; border-top: 1px solid var(--border); margin: 8px 0 32px; }
+    .calc-results { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .calc-result-card { background: var(--light); padding: 24px; }
+    .calc-result-card.primary { background: var(--purple); }
+    .calc-result-label { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray); margin-bottom: 6px; }
+    .calc-result-card.primary .calc-result-label { color: rgba(255,255,255,0.7); }
+    .calc-result-value { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 600; color: var(--black); line-height: 1; }
+    .calc-result-card.primary .calc-result-value { color: var(--white); }
+    .calc-result-unit { font-size: 13px; color: var(--gray); margin-top: 4px; }
+    .calc-result-card.primary .calc-result-unit { color: rgba(255,255,255,0.6); }
+    .calc-explanation { margin-top: 24px; padding: 20px; background: var(--white); border: 1px solid var(--border); font-size: 14px; color: var(--gray); line-height: 1.7; }
+    .cta-box { background: var(--light); padding: 48px; margin: 60px 0; text-align: center; }
+    .cta-box h3 { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 600; margin-bottom: 16px; }
+    .cta-box p { font-size: 16px; font-weight: 300; color: var(--gray); margin-bottom: 32px; }
+    .contact { background: var(--black); padding: 80px 48px; text-align: center; }
+    .contact h2 { font-family: 'Playfair Display', serif; font-size: clamp(24px, 3vw, 40px); font-weight: 600; color: var(--white); margin-bottom: 16px; }
+    .contact p { font-size: 16px; font-weight: 300; color: rgba(250,250,250,0.5); margin-bottom: 32px; }
+    .contact a.btn-white { display: inline-block; padding: 14px 32px; background: var(--white); color: var(--black); font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; text-decoration: none; }
+    footer { padding: 32px 48px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); }
+    footer p { font-size: 13px; color: var(--gray); }
+    footer a { color: var(--gray); text-decoration: none; font-size: 13px; }
+    @media (max-width: 768px) {
+      nav { padding: 20px 24px; }
+      .page-hero { padding: 120px 24px 60px; }
+      .content { padding: 0 24px 60px; }
+      .calc-grid { grid-template-columns: 1fr; }
+      .calc-results { grid-template-columns: 1fr; }
+      .calculator { padding: 32px 24px; }
+      .contact { padding: 60px 24px; }
+      footer { padding: 24px; flex-direction: column; gap: 12px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="/" class="logo">VibeStack</a>
+    <a href="https://apps.shopify.com/vibe-stack-ai-back-office" class="nav-link" target="_blank">Install free →</a>
+  </nav>
+
+  <div class="page-hero">
+    <p class="tag">Guide + Free Calculator</p>
+    <h1>How to calculate reorder quantity in Shopify</h1>
+    <p>Ordering too much ties up cash. Ordering too little means stockouts. Here's the formula for getting it right — plus a free calculator you can use right now.</p>
+  </div>
+
+  <div class="content">
+
+    <h2>The reorder quantity formula</h2>
+    <p>The right reorder quantity covers your expected sales during the time it takes to receive new stock, plus a buffer in case demand spikes or delivery is delayed. The formula is:</p>
+
+    <div class="formula">
+      Reorder Quantity = (Daily Velocity × (Lead Time + Safety Stock + Forecast Days)) − Current Stock
+      <br><br>
+      Where:<br>
+      Daily Velocity = units sold per day (based on recent sales history)<br>
+      Lead Time = days from order to delivery<br>
+      Safety Stock = buffer days you want to keep on hand<br>
+      Forecast Days = how many days ahead you want to plan<br>
+      Current Stock = units you have on hand right now
+    </div>
+
+    <p>If the result is negative, you have more stock than you need for the forecast period and don't need to reorder yet. If you have a minimum order quantity (MOQ) from your supplier, round up to that.</p>
+
+    <h2>Free reorder quantity calculator</h2>
+
+    <div class="calculator">
+      <h3>Reorder Quantity Calculator</h3>
+      <p class="subtitle">Enter your numbers below to calculate how much to order.</p>
+
+      <div class="calc-grid">
+        <div class="calc-field">
+          <label>Units sold (last 30 days)</label>
+          <input type="number" id="unitsSold" placeholder="e.g. 90" min="0" oninput="calculate()">
+          <span class="help">Total units sold in the last 30 days</span>
+        </div>
+        <div class="calc-field">
+          <label>Current stock (units on hand)</label>
+          <input type="number" id="currentStock" placeholder="e.g. 40" min="0" oninput="calculate()">
+          <span class="help">How many units you have right now</span>
+        </div>
+        <div class="calc-field">
+          <label>Lead time (days)</label>
+          <input type="number" id="leadTime" placeholder="e.g. 30" min="0" oninput="calculate()">
+          <span class="help">Days from placing order to receiving stock</span>
+        </div>
+        <div class="calc-field">
+          <label>Safety stock (days)</label>
+          <input type="number" id="safetyStock" placeholder="e.g. 7" min="0" oninput="calculate()">
+          <span class="help">Buffer days to keep on hand</span>
+        </div>
+        <div class="calc-field">
+          <label>Forecast period (days)</label>
+          <input type="number" id="forecastDays" placeholder="e.g. 90" min="0" oninput="calculate()">
+          <span class="help">How many days ahead to plan for</span>
+        </div>
+        <div class="calc-field">
+          <label>Minimum order quantity (MOQ)</label>
+          <input type="number" id="moq" placeholder="e.g. 100" min="0" oninput="calculate()">
+          <span class="help">Supplier's minimum order (optional)</span>
+        </div>
+      </div>
+
+      <hr class="calc-divider">
+
+      <div class="calc-results" id="results" style="display: none;">
+        <div class="calc-result-card primary">
+          <p class="calc-result-label">Recommended order quantity</p>
+          <p class="calc-result-value" id="orderQty">—</p>
+          <p class="calc-result-unit">units</p>
+        </div>
+        <div class="calc-result-card">
+          <p class="calc-result-label">Days of stock remaining</p>
+          <p class="calc-result-value" id="daysLeft">—</p>
+          <p class="calc-result-unit">days at current velocity</p>
+        </div>
+        <div class="calc-result-card">
+          <p class="calc-result-label">Daily sales velocity</p>
+          <p class="calc-result-value" id="velocity">—</p>
+          <p class="calc-result-unit">units per day</p>
+        </div>
+        <div class="calc-result-card">
+          <p class="calc-result-label">Reorder by</p>
+          <p class="calc-result-value" id="reorderDate" style="font-size: 24px;">—</p>
+          <p class="calc-result-unit">to avoid stockout</p>
+        </div>
+      </div>
+
+      <div class="calc-explanation" id="explanation" style="display: none;"></div>
+    </div>
+
+    <h2>Understanding each variable</h2>
+
+    <h3>Daily velocity</h3>
+    <p>This is how fast you're selling a product. Calculate it by dividing total units sold by the number of days in your measurement period. Use at least 30 days of data for accuracy, 60-90 days is better for products with variable demand.</p>
+
+    <h3>Lead time</h3>
+    <p>The number of days between placing a purchase order and having stock available to sell. Include transit time, receiving, and any processing time. If your supplier says "2-3 weeks," use 21 days to be safe.</p>
+
+    <h3>Safety stock</h3>
+    <p>A buffer to protect against unexpected demand spikes or delivery delays. A common starting point is 7 days of sales. If your product has highly variable demand or your supplier is unreliable, increase this.</p>
+
+    <h3>Forecast period</h3>
+    <p>How far out you want to plan. 90 days is a common default — it gives you enough runway to avoid multiple reorder cycles while not over-committing capital.</p>
+
+    <h3>Minimum order quantity (MOQ)</h3>
+    <p>Your supplier's minimum. If your calculated reorder quantity is less than the MOQ, you have to order the MOQ anyway. Factor this into your safety stock planning.</p>
+
+    <h2>The problem with doing this manually</h2>
+    <p>The calculation above works great for one product. If you have 50, 100, or 500 SKUs, doing this in a spreadsheet for every product every month is a significant time investment — and spreadsheets go stale the moment you close them.</p>
+    <p>Stockwise automates this for every product in your Shopify store. It reads your order history, calculates velocity per SKU, applies your lead time and MOQ settings, and shows you exactly what to reorder and when — updated every time you open the dashboard.</p>
+
+    <div class="cta-box">
+      <h3>Automate this for every product in your store</h3>
+      <p>Stockwise runs this calculation for every SKU automatically, using your actual Shopify sales data. Install free and you'll have your full reorder report in 5 minutes.</p>
+      <a href="https://apps.shopify.com/vibe-stack-ai-back-office" class="btn-primary" target="_blank">Install free on Shopify — 30-day trial →</a>
+    </div>
+
+  </div>
+
+  <div class="contact">
+    <h2>Questions? Talk to the founder.</h2>
+    <p>Stefan built Stockwise and is happy to walk you through how it calculates reorder quantities for your store.</p>
+    <a href="mailto:stefan@vibestackapp.com" class="btn-white">stefan@vibestackapp.com</a>
+  </div>
+
+  <footer>
+    <a href="/" class="logo">VibeStack</a>
+    <div style="display: flex; gap: 24px;">
+      <a href="/best-stocky-alternatives.html">Stocky alternatives</a>
+      <a href="/shopify-inventory-forecasting-offline-pos.html">Offline POS guide</a>
+      <a href="/stockwise-vs-stockie.html">vs Stockie</a>
+    </div>
+    <p>&copy; 2026 VibeStack. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function calculate() {
+      const unitsSold = parseFloat(document.getElementById('unitsSold').value) || 0;
+      const currentStock = parseFloat(document.getElementById('currentStock').value) || 0;
+      const leadTime = parseFloat(document.getElementById('leadTime').value) || 0;
+      const safetyStock = parseFloat(document.getElementById('safetyStock').value) || 7;
+      const forecastDays = parseFloat(document.getElementById('forecastDays').value) || 90;
+      const moq = parseFloat(document.getElementById('moq').value) || 0;
+
+      if (!unitsSold) {
+        document.getElementById('results').style.display = 'none';
+        document.getElementById('explanation').style.display = 'none';
+        return;
+      }
+
+      const dailyVelocity = unitsSold / 30;
+      const daysLeft = dailyVelocity > 0 ? Math.floor(currentStock / dailyVelocity) : 0;
+      const totalDays = forecastDays + leadTime + safetyStock;
+      const totalNeeded = Math.ceil(dailyVelocity * totalDays);
+      let orderQty = Math.max(0, totalNeeded - currentStock);
+      if (moq > 0 && orderQty > 0) orderQty = Math.max(orderQty, moq);
+
+      const reorderInDays = Math.max(0, daysLeft - leadTime - safetyStock);
+      const reorderDate = new Date();
+      reorderDate.setDate(reorderDate.getDate() + reorderInDays);
+      const reorderDateStr = reorderDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+
+      document.getElementById('orderQty').textContent = orderQty > 0 ? orderQty.toLocaleString() : '0';
+      document.getElementById('daysLeft').textContent = daysLeft.toLocaleString();
+      document.getElementById('velocity').textContent = dailyVelocity.toFixed(2);
+      document.getElementById('reorderDate').textContent = reorderInDays <= 0 ? 'Now' : reorderDateStr;
+
+      let explanation = `At ${dailyVelocity.toFixed(2)} units/day, you have approximately ${daysLeft} days of stock remaining. `;
+      if (orderQty === 0) {
+        explanation += `You have enough stock to cover your ${forecastDays}-day forecast period including lead time and safety stock. No reorder needed yet.`;
+      } else {
+        explanation += `To cover ${forecastDays} days of sales plus ${leadTime} days lead time and ${safetyStock} days safety stock, you need ${totalNeeded} units total. `;
+        explanation += `With ${currentStock} on hand, order ${orderQty} units`;
+        if (moq > 0 && orderQty === moq) explanation += ` (rounded up to your MOQ of ${moq})`;
+        explanation += `.`;
+        if (reorderInDays > 0) {
+          explanation += ` Place your order by ${reorderDateStr} to avoid stocking out.`;
+        } else {
+          explanation += ` You should reorder now.`;
+        }
+      }
+
+      document.getElementById('explanation').textContent = explanation;
+      document.getElementById('results').style.display = 'grid';
+      document.getElementById('explanation').style.display = 'block';
+    }
+  </script>
+</body>
+</html>

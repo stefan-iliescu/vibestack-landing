@@ -9,308 +9,61 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --black: #0f0f0f;
-      --white: #fafafa;
-      --gray: #6b6b6b;
-      --light: #f0ede8;
-      --purple: #7C3AED;
-      --border: #e0dbd3;
-    }
-
+    :root { --black: #0f0f0f; --white: #fafafa; --gray: #6b6b6b; --light: #f0ede8; --purple: #7C3AED; --border: #e0dbd3; }
     html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--white);
-      color: var(--black);
-      font-size: 16px;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      padding: 24px 48px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(250, 250, 250, 0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 22px;
-      font-weight: 600;
-      letter-spacing: -0.5px;
-      color: var(--black);
-      text-decoration: none;
-    }
-
-    .nav-link {
-      font-size: 14px;
-      color: var(--gray);
-      text-decoration: none;
-      letter-spacing: 0.02em;
-      transition: color 0.2s;
-    }
-
+    body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--black); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 24px 48px; display: flex; justify-content: space-between; align-items: center; background: rgba(250,250,250,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    .logo { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 600; letter-spacing: -0.5px; color: var(--black); text-decoration: none; }
+    .nav-link { font-size: 14px; color: var(--gray); text-decoration: none; letter-spacing: 0.02em; transition: color 0.2s; }
     .nav-link:hover { color: var(--black); }
-
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 120px 48px 80px;
-      max-width: 1100px;
-      margin: 0 auto;
-      animation: fadeUp 0.9s ease forwards 0.2s;
-    }
-
-    .hero-tag {
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--gray);
-      margin-bottom: 32px;
-    }
-
-    .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(42px, 6vw, 80px);
-      font-weight: 600;
-      line-height: 1.1;
-      letter-spacing: -1.5px;
-      color: var(--black);
-      max-width: 800px;
-      margin-bottom: 32px;
-    }
-
+    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 120px 48px 80px; max-width: 1100px; margin: 0 auto; animation: fadeUp 0.9s ease forwards 0.2s; }
+    .hero-tag { font-size: 12px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gray); margin-bottom: 32px; }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(42px, 6vw, 80px); font-weight: 600; line-height: 1.1; letter-spacing: -1.5px; color: var(--black); max-width: 800px; margin-bottom: 32px; }
     .hero h1 em { font-style: italic; color: var(--gray); }
-
-    .hero p {
-      font-size: 18px;
-      font-weight: 300;
-      color: var(--gray);
-      max-width: 520px;
-      line-height: 1.7;
-      margin-bottom: 48px;
-    }
-
+    .hero p { font-size: 18px; font-weight: 300; color: var(--gray); max-width: 520px; line-height: 1.7; margin-bottom: 48px; }
     .hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
-
-    .btn-primary {
-      display: inline-block;
-      padding: 14px 28px;
-      background: var(--black);
-      color: var(--white);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 14px;
-      font-weight: 500;
-      text-decoration: none;
-      letter-spacing: 0.02em;
-      transition: opacity 0.2s;
-      border: none;
-      cursor: pointer;
-    }
-
+    .btn-primary { display: inline-block; padding: 14px 28px; background: var(--black); color: var(--white); font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; text-decoration: none; letter-spacing: 0.02em; transition: opacity 0.2s; }
     .btn-primary:hover { opacity: 0.8; }
-
-    .btn-ghost {
-      display: inline-block;
-      padding: 14px 28px;
-      border: 1px solid var(--border);
-      color: var(--black);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 14px;
-      font-weight: 400;
-      text-decoration: none;
-      letter-spacing: 0.02em;
-      transition: border-color 0.2s;
-    }
-
+    .btn-ghost { display: inline-block; padding: 14px 28px; border: 1px solid var(--border); color: var(--black); font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 400; text-decoration: none; letter-spacing: 0.02em; transition: border-color 0.2s; }
     .btn-ghost:hover { border-color: var(--black); }
-
     .divider { border: none; border-top: 1px solid var(--border); margin: 0 48px; }
-
     section { max-width: 1100px; margin: 0 auto; padding: 100px 48px; }
-
-    .section-tag {
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--purple);
-      margin-bottom: 48px;
-    }
-
+    .section-tag { font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--purple); margin-bottom: 48px; }
     .problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-
-    .problem-grid h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(28px, 3.5vw, 44px);
-      font-weight: 600;
-      line-height: 1.2;
-      letter-spacing: -0.5px;
-      color: var(--black);
-    }
-
+    .problem-grid h2 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 3.5vw, 44px); font-weight: 600; line-height: 1.2; letter-spacing: -0.5px; color: var(--black); }
     .problem-grid h2 em { font-style: italic; color: var(--gray); }
-
     .problem-text { font-size: 16px; font-weight: 300; color: var(--gray); line-height: 1.8; }
     .problem-text p + p { margin-top: 20px; }
-
-    .product-card {
-      background: var(--light);
-      padding: 64px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      align-items: center;
-    }
-
-    .product-label {
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--purple);
-      margin-bottom: 20px;
-    }
-
-    .product-card h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 36px;
-      font-weight: 600;
-      letter-spacing: -0.5px;
-      color: var(--black);
-      margin-bottom: 20px;
-    }
-
-    .product-card p {
-      font-size: 16px;
-      font-weight: 300;
-      color: var(--gray);
-      line-height: 1.8;
-      margin-bottom: 32px;
-    }
-
-    .product-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
-
+    .product-card { background: var(--light); padding: 64px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .product-label { font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--purple); margin-bottom: 20px; }
+    .product-card h3 { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 600; letter-spacing: -0.5px; color: var(--black); margin-bottom: 20px; }
+    .product-card p { font-size: 16px; font-weight: 300; color: var(--gray); line-height: 1.8; margin-bottom: 32px; }
     .feature-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-
-    .feature-list li {
-      font-size: 14px;
-      font-weight: 400;
-      color: var(--black);
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-    }
-
-    .feature-list li::before {
-      content: '';
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background: var(--purple);
-      flex-shrink: 0;
-      margin-top: 8px;
-    }
-
-    .feature-list strong {
-      font-weight: 500;
-    }
-
+    .feature-list li { font-size: 14px; font-weight: 400; color: var(--black); display: flex; align-items: flex-start; gap: 12px; }
+    .feature-list li::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--purple); flex-shrink: 0; margin-top: 8px; }
+    .feature-list strong { font-weight: 500; }
+    .seo-links { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin-top: 48px; }
+    .seo-link { padding: 20px 24px; border: 1px solid var(--border); text-decoration: none; color: var(--black); transition: border-color 0.2s; }
+    .seo-link:hover { border-color: var(--purple); }
+    .seo-link-tag { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--purple); margin-bottom: 8px; }
+    .seo-link-title { font-size: 15px; font-weight: 500; }
     .vision { text-align: center; padding: 120px 48px; max-width: 1100px; margin: 0 auto; }
-
-    .vision h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(32px, 4vw, 56px);
-      font-weight: 600;
-      line-height: 1.2;
-      letter-spacing: -1px;
-      color: var(--black);
-      max-width: 700px;
-      margin: 0 auto 32px;
-    }
-
+    .vision h2 { font-family: 'Playfair Display', serif; font-size: clamp(32px, 4vw, 56px); font-weight: 600; line-height: 1.2; letter-spacing: -1px; color: var(--black); max-width: 700px; margin: 0 auto 32px; }
     .vision h2 em { font-style: italic; color: var(--gray); }
-
-    .vision p {
-      font-size: 17px;
-      font-weight: 300;
-      color: var(--gray);
-      max-width: 560px;
-      margin: 0 auto;
-      line-height: 1.8;
-    }
-
+    .vision p { font-size: 17px; font-weight: 300; color: var(--gray); max-width: 560px; margin: 0 auto; line-height: 1.8; }
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-
-    .about-grid h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(28px, 3vw, 40px);
-      font-weight: 600;
-      line-height: 1.2;
-      letter-spacing: -0.5px;
-      color: var(--black);
-    }
-
+    .about-grid h2 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 3vw, 40px); font-weight: 600; line-height: 1.2; letter-spacing: -0.5px; color: var(--black); }
     .about-text { font-size: 16px; font-weight: 300; color: var(--gray); line-height: 1.8; }
     .about-text p + p { margin-top: 20px; }
-
     .contact { background: var(--black); padding: 100px 48px; text-align: center; }
-
-    .contact h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(28px, 3.5vw, 48px);
-      font-weight: 600;
-      letter-spacing: -0.5px;
-      color: var(--white);
-      margin-bottom: 20px;
-    }
-
+    .contact h2 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 3.5vw, 48px); font-weight: 600; letter-spacing: -0.5px; color: var(--white); margin-bottom: 20px; }
     .contact p { font-size: 16px; font-weight: 300; color: rgba(250,250,250,0.5); margin-bottom: 40px; }
-
-    .contact a.btn-white {
-      display: inline-block;
-      padding: 14px 32px;
-      background: var(--white);
-      color: var(--black);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 14px;
-      font-weight: 500;
-      text-decoration: none;
-      letter-spacing: 0.02em;
-      transition: opacity 0.2s;
-    }
-
+    .contact a.btn-white { display: inline-block; padding: 14px 32px; background: var(--white); color: var(--black); font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; text-decoration: none; transition: opacity 0.2s; }
     .contact a.btn-white:hover { opacity: 0.85; }
-
-    footer {
-      padding: 32px 48px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-top: 1px solid var(--border);
-    }
-
+    footer { padding: 32px 48px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); }
     footer .logo { font-size: 18px; }
     footer p { font-size: 13px; color: var(--gray); }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
     @media (max-width: 768px) {
       nav { padding: 20px 24px; }
       .hero { padding: 100px 24px 60px; }
@@ -325,7 +78,6 @@
   </style>
 </head>
 <body>
-
   <nav>
     <a href="/" class="logo">VibeStack</a>
     <a href="mailto:stefan@vibestackapp.com" class="nav-link">Get in touch</a>
@@ -336,7 +88,7 @@
     <h1>Enterprise tools,<br>built for <em>everyone else.</em></h1>
     <p>Small and medium merchants run the backbone of every economy. They deserve software built with the same rigor typically reserved for the largest companies in the world.</p>
     <div class="hero-actions">
-      <a href="https://apps.shopify.com/vibe-stack-ai-back-office" class="btn-primary" target="_blank">Install on Shopify</a>
+      <a href="https://apps.shopify.com/vibe-stack-ai-back-office" class="btn-primary" target="_blank">Install on Shopify — Free 30-day trial</a>
       <a href="mailto:stefan@vibestackapp.com" class="btn-ghost">Get in touch</a>
     </div>
   </div>
@@ -361,22 +113,58 @@
     <p class="section-tag">Our first product — Now live on Shopify</p>
     <div class="product-card">
       <div>
-        <p class="product-label">Available now on Shopify · $29.99/month</p>
-        <h3>Stockwise by VibeStack</h3>
-        <p>Know what to order, when to order it, and how much. Stockwise turns your Shopify order history into clear inventory decisions — no spreadsheets, no guesswork.</p>
-        <div class="product-actions">
-          <a href="https://apps.shopify.com/vibe-stack-ai-back-office" class="btn-primary" style="background: var(--purple);" target="_blank">Install on Shopify</a>
-        </div>
+        <p class="product-label">Available now on Shopify · $29.99/month · 30-day free trial</p>
+        <h3>Stockwise Reorder Solutions</h3>
+        <p>Know what to reorder, when to reorder it, and how much — without the spreadsheet. Install free and within 5 minutes you'll see your top stockout risks and exactly what to order.</p>
+        <a href="https://apps.shopify.com/vibe-stack-ai-back-office" class="btn-primary" style="background: var(--purple);" target="_blank">Install free on Shopify</a>
       </div>
       <ul class="feature-list">
         <li><span><strong>Stockout predictions</strong> — See exactly how many days of stock remain per product</span></li>
         <li><span><strong>Demand forecasting</strong> — Get reorder quantities based on lead time and safety stock</span></li>
         <li><span><strong>Sales trend analysis</strong> — Compare this week vs last week, last month, and last year</span></li>
+        <li><span><strong>Offline sales CSV import</strong> — Blend Shopify + offline sales for a complete forecast</span></li>
         <li><span><strong>Early warning alerts</strong> — Critical (≤7d), Warning (≤30d), and Watch (≤365d) thresholds</span></li>
-        <li><span><strong>Manual sales data</strong> — Add sales from channels not connected to your Shopify store</span></li>
         <li><span><strong>Email reports</strong> — Get a full inventory forecast as a CSV, on demand</span></li>
         <li><span><strong>Product exclusions</strong> — Hide discontinued products from your dashboard</span></li>
       </ul>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section>
+    <p class="section-tag">Learn more</p>
+    <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(24px, 3vw, 36px); font-weight: 600; letter-spacing: -0.5px; margin-bottom: 16px;">Guides and comparisons</h2>
+    <p style="font-size: 16px; font-weight: 300; color: var(--gray); max-width: 520px; line-height: 1.8;">Everything you need to make the right inventory management decision for your Shopify store.</p>
+    <div class="seo-links">
+      <a href="/best-stocky-alternatives.html" class="seo-link">
+        <p class="seo-link-tag">Guide</p>
+        <p class="seo-link-title">Best Stocky alternatives for Shopify</p>
+      </a>
+      <a href="/shopify-inventory-forecasting-offline-pos.html" class="seo-link">
+        <p class="seo-link-tag">Guide</p>
+        <p class="seo-link-title">Shopify inventory forecasting for stores not using Shopify POS</p>
+      </a>
+      <a href="/how-to-calculate-reorder-quantity-shopify.html" class="seo-link">
+        <p class="seo-link-tag">Guide</p>
+        <p class="seo-link-title">How to calculate reorder quantity in Shopify</p>
+      </a>
+      <a href="/stockwise-vs-stockie.html" class="seo-link">
+        <p class="seo-link-tag">Comparison</p>
+        <p class="seo-link-title">Stockwise vs Stockie</p>
+      </a>
+      <a href="/stockwise-vs-prediko.html" class="seo-link">
+        <p class="seo-link-tag">Comparison</p>
+        <p class="seo-link-title">Stockwise vs Prediko</p>
+      </a>
+      <a href="/stockwise-vs-assisty.html" class="seo-link">
+        <p class="seo-link-tag">Comparison</p>
+        <p class="seo-link-title">Stockwise vs Assisty</p>
+      </a>
+      <a href="/stockwise-vs-inventory-planner.html" class="seo-link">
+        <p class="seo-link-tag">Comparison</p>
+        <p class="seo-link-title">Stockwise vs Inventory Planner</p>
+      </a>
     </div>
   </section>
 
@@ -412,6 +200,5 @@
     <a href="/" class="logo">VibeStack</a>
     <p>&copy; 2026 VibeStack. All rights reserved.</p>
   </footer>
-
 </body>
 </html>
