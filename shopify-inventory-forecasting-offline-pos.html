@@ -5,14 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shopify Inventory Forecasting for Stores Not Using Shopify POS</title>
   <meta name="description" content="If you sell at physical locations outside Shopify POS, your inventory forecasts are probably wrong. Here's how to fix that.">
+  <link rel="icon" type="image/png" href="/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root { --black: #0f0f0f; --white: #fafafa; --gray: #6b6b6b; --light: #f0ede8; --purple: #7C3AED; --border: #e0dbd3; }
     body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--black); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 24px 48px; display: flex; justify-content: space-between; align-items: center; background: rgba(250,250,250,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
-    .logo { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 600; letter-spacing: -0.5px; color: var(--black); text-decoration: none; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 48px; display: flex; justify-content: space-between; align-items: center; background: rgba(250,250,250,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    .logo-link { text-decoration: none; display: flex; align-items: center; gap: 10px; }
+    .logo-img { width: 32px; height: 32px; border-radius: 7px; display: block; }
+    .logo-text { display: flex; flex-direction: column; line-height: 1.15; }
+    .logo-primary { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 600; letter-spacing: -0.3px; color: var(--black); }
+    .logo-sub { font-size: 10px; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray); margin-top: 2px; }
     .nav-link { font-size: 14px; color: var(--gray); text-decoration: none; }
     .page-hero { padding: 160px 48px 80px; max-width: 800px; margin: 0 auto; }
     .page-hero .tag { font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--purple); margin-bottom: 24px; }
@@ -37,10 +42,12 @@
     .contact p { font-size: 16px; font-weight: 300; color: rgba(250,250,250,0.5); margin-bottom: 32px; }
     .contact a.btn-white { display: inline-block; padding: 14px 32px; background: var(--white); color: var(--black); font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; text-decoration: none; }
     footer { padding: 32px 48px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); }
+    footer .logo-img { width: 26px; height: 26px; }
+    footer .logo-primary { font-size: 15px; }
     footer p { font-size: 13px; color: var(--gray); }
     footer a { color: var(--gray); text-decoration: none; font-size: 13px; }
     @media (max-width: 768px) {
-      nav { padding: 20px 24px; }
+      nav { padding: 16px 24px; }
       .page-hero { padding: 120px 24px 60px; }
       .content { padding: 0 24px 60px; }
       .contact { padding: 60px 24px; }
@@ -50,15 +57,21 @@
 </head>
 <body>
   <nav>
-    <a href="/" class="logo">VibeStack</a>
-    <a href="https://apps.shopify.com/vibe-stack-ai-back-office" class="nav-link" target="_blank">Install free →</a>
+    <a href="/" class="logo-link">
+      <img src="/logo.png" alt="Stockwise" class="logo-img">
+      <span class="logo-text">
+        <span class="logo-primary">Stockwise Reorder Solutions</span>
+        <span class="logo-sub">by VibeStack</span>
+      </span>
+    </a>
+    <a href="https://apps.shopify.com/vibe-stack-ai-back-office?utm_source=vibestackapp&utm_medium=website&utm_campaign=offline-pos-guide" class="nav-link" target="_blank">Install free →</a>
   </nav>
 
   <div class="page-hero">
     <p class="tag">Guide</p>
     <h1>Shopify inventory forecasting for stores not using Shopify POS</h1>
     <p>If you sell at physical locations, markets, trade shows, or wholesale, and those sales aren't going through Shopify POS your inventory forecasts are probably wrong. Here's why, and how to fix it.</p>
-    <a href="https://apps.shopify.com/vibe-stack-ai-back-office" class="btn-primary" target="_blank">Fix your forecasts with Stockwise — free trial →</a>
+    <a href="https://apps.shopify.com/vibe-stack-ai-back-office?utm_source=vibestackapp&utm_medium=website&utm_campaign=offline-pos-guide" class="btn-primary" target="_blank">Fix your forecasts with Stockwise, free trial →</a>
   </div>
 
   <div class="content">
@@ -100,7 +113,7 @@
     <p>Set a recurring reminder, weekly or monthly, to export from your POS and import into Stockwise. Once your column mapping is saved, re-imports take under a minute.</p>
 
     <h2>What a blended forecast looks like</h2>
-    <p>Say you sell a product that moves 5 units/week on Shopify and 3 units/week at your market booth. A Shopify-only forecast would calculate 5 units/week. A blended forecast would calculate 8 units/week,  which changes your days-of-stock calculation and your reorder recommendation significantly.</p>
+    <p>Say you sell a product that moves 5 units/week on Shopify and 3 units/week at your market booth. A Shopify-only forecast would calculate 5 units/week. A blended forecast would calculate 8 units/week, which changes your days-of-stock calculation and your reorder recommendation significantly.</p>
 
     <div class="callout">
       <p>With 100 units in stock: Shopify-only forecast says 20 days of stock. Blended forecast says 12.5 days. That's the difference between reordering next month and reordering this week.</p>
@@ -118,7 +131,7 @@
     <div class="cta-box">
       <h3>Get accurate forecasts with Stockwise</h3>
       <p>Stockwise is the only Shopify inventory app that lets you import offline sales via CSV and blend them with your Shopify order history. Install free and your first blended forecast takes about 5 minutes.</p>
-      <a href="https://apps.shopify.com/vibe-stack-ai-back-office" class="btn-primary" target="_blank">Install free on Shopify — 30-day trial →</a>
+      <a href="https://apps.shopify.com/vibe-stack-ai-back-office?utm_source=vibestackapp&utm_medium=website&utm_campaign=offline-pos-guide" class="btn-primary" target="_blank">Install free on Shopify - 30-day trial →</a>
     </div>
 
   </div>
@@ -130,7 +143,12 @@
   </div>
 
   <footer>
-    <a href="/" class="logo">VibeStack</a>
+    <a href="/" class="logo-link">
+      <img src="/logo.png" alt="Stockwise" class="logo-img">
+      <span class="logo-text">
+        <span class="logo-primary">Stockwise Reorder Solutions</span>
+      </span>
+    </a>
     <div style="display: flex; gap: 24px;">
       <a href="/best-stocky-alternatives.html">Stocky alternatives</a>
       <a href="/how-to-calculate-reorder-quantity-shopify.html">Reorder calculator</a>
