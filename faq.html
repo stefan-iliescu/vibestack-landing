@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ - Stockwise Reorder Solutions</title>
+<meta name="description" content="Frequently asked questions about Stockwise, the automated reorder and inventory forecasting app for Shopify.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --black: #0f0f0f; --white: #fafafa; --gray: #6b6b6b; --light: #f0ede8; --purple: #7C3AED; --border: #e0dbd3; }
+body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--black); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 24px 48px; display: flex; justify-content: space-between; align-items: center; background: rgba(250,250,250,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+.logo { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 600; letter-spacing: -0.5px; color: var(--black); text-decoration: none; }
+.nav-link { font-size: 14px; color: var(--gray); text-decoration: none; }
+.page-hero { padding: 160px 48px 60px; max-width: 800px; margin: 0 auto; }
+.page-hero .tag { font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--purple); margin-bottom: 24px; }
+.page-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 4.5vw, 52px); font-weight: 600; line-height: 1.1; letter-spacing: -1px; margin-bottom: 20px; }
+.page-hero p { font-size: 17px; font-weight: 300; color: var(--gray); line-height: 1.7; }
+.content { max-width: 800px; margin: 0 auto; padding: 0 48px 100px; }
+.faq-category { font-size: 12px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--purple); margin: 56px 0 8px; }
+.faq-category:first-child { margin-top: 0; }
+.faq-item { border-bottom: 1px solid var(--border); padding: 28px 0; scroll-margin-top: 100px; }
+.faq-item h3 { margin: 0 0 10px; font-size: 17px; font-weight: 500; }
+.faq-item p { margin: 0; font-size: 16px; font-weight: 300; color: var(--gray); line-height: 1.8; }
+.cta-box { background: var(--light); padding: 48px; margin: 60px 0 0; text-align: center; }
+.cta-box h3 { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 600; margin-bottom: 16px; }
+.cta-box p { font-size: 16px; font-weight: 300; color: var(--gray); margin-bottom: 28px; }
+.btn-primary { display: inline-block; padding: 14px 28px; background: var(--purple); color: var(--white); font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; text-decoration: none; }
+.contact { background: var(--black); padding: 80px 48px; text-align: center; }
+.contact h2 { font-family: 'Playfair Display', serif; font-size: clamp(24px, 3vw, 40px); font-weight: 600; color: var(--white); margin-bottom: 16px; }
+.contact p { font-size: 16px; font-weight: 300; color: rgba(250,250,250,0.5); margin-bottom: 32px; }
+.contact a.btn-white { display: inline-block; padding: 14px 32px; background: var(--white); color: var(--black); font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; text-decoration: none; }
+footer { padding: 32px 48px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); }
+footer p { font-size: 13px; color: var(--gray); }
+footer a { color: var(--gray); text-decoration: none; font-size: 13px; }
+@media (max-width: 768px) {
+nav { padding: 20px 24px; }
+.page-hero { padding: 120px 24px 40px; }
+.content { padding: 0 24px 60px; }
+.contact { padding: 60px 24px; }
+footer { padding: 24px; flex-direction: column; gap: 12px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+<a href="/" class="logo">VibeStack</a>
+<a href="https://apps.shopify.com/vibe-stack-ai-back-office" class="nav-link" target="_blank">Install free →</a>
+</nav>
+
+<div class="page-hero">
+<p class="tag">FAQ</p>
+<h1>Frequently asked questions</h1>
+<p>Everything merchants ask before and after installing Stockwise.</p>
+</div>
+
+<div class="content">
+
+<p class="faq-category">Forecasting and reordering</p>
+
+<div class="faq-item" id="how-forecasting-works">
+<h3>How does the forecasting actually work?</h3>
+<p>Stockwise tracks your real sales velocity per product, then combines it with your lead time and a safety stock buffer you set to calculate exactly how many units to reorder and by when. It is not a static rule, it updates as your sales trend changes.</p>
+</div>
+
+<div class="faq-item">
+<h3>What if a product has no sales history yet?</h3>
+<p>New products need some sales data before a reliable forecast can be generated. Until then, Stockwise shows the product as "no data" rather than guessing.</p>
+</div>
+
+<div class="faq-item">
+<h3>Do purchase orders get sent automatically?</h3>
+<p>Stockwise drafts the purchase order from your forecast automatically, so it is ready to review and send with one click. You stay in control of what actually goes to your supplier.</p>
+</div>
+
+<div class="faq-item">
+<h3>What happens when I receive a purchase order?</h3>
+<p>Mark it received in Stockwise and your Shopify inventory updates automatically to reflect the new stock. No manual recount needed.</p>
+</div>
+
+<p class="faq-category">Multi-store</p>
+
+<div class="faq-item" id="multi-store">
+<h3>Can I connect more than one Shopify store?</h3>
+<p>Yes. Connect any number of additional Shopify stores and Stockwise keeps their inventory in sync automatically by matching SKUs, at no extra charge per store. See the <a href="/shopify-multi-store-inventory-sync.html">full guide</a> for how it works.</p>
+</div>
+
+<div class="faq-item">
+<h3>Does connecting a store cost extra?</h3>
+<p>No. You subscribe once on your primary store. Every additional connected store syncs on the same subscription.</p>
+</div>
+
+<p class="faq-category">Data and setup</p>
+
+<div class="faq-item" id="pos-required">
+<h3>Do I need Shopify POS to use this?</h3>
+<p>No. Stockwise works from your Shopify order data directly. If you also sell in person or offline, you can import that data as a CSV so your forecast reflects everywhere you sell.</p>
+</div>
+
+<div class="faq-item">
+<h3>How long does setup take?</h3>
+<p>A few minutes. Install the app, and Stockwise pulls in your existing order history to start forecasting right away.</p>
+</div>
+
+<p class="faq-category">Pricing</p>
+
+<div class="faq-item" id="pricing">
+<h3>What does Stockwise cost?</h3>
+<p>$29.99 per month, with a 30 day free trial. No setup fee.</p>
+</div>
+
+<div class="faq-item">
+<h3>Can I cancel anytime?</h3>
+<p>Yes, cancel directly from your Shopify admin at any time.</p>
+</div>
+
+<div class="cta-box">
+<h3>Still have a question?</h3>
+<p>Stefan built Stockwise and answers support emails personally.</p>
+<a href="mailto:stefan@vibestackapp.com" class="btn-primary">stefan@vibestackapp.com</a>
+</div>
+
+</div>
+
+<div class="contact">
+<h2>Ready to try it?</h2>
+<p>30 day free trial, no setup fee.</p>
+<a href="https://apps.shopify.com/vibe-stack-ai-back-office" class="btn-white" target="_blank">Install free on Shopify</a>
+</div>
+
+<footer>
+<a href="/" class="logo">VibeStack</a>
+<div style="display: flex; gap: 24px;">
+<a href="/best-stocky-alternatives.html">Stocky alternatives</a>
+<a href="/shopify-multi-store-inventory-sync.html">Multi-store sync</a>
+<a href="/stockwise-vs-stockie.html">vs Stockie</a>
+</div>
+<p>&copy; 2026 VibeStack. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
