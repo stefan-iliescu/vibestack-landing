@@ -3,8 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VibeStack - Back-Office Software for Independent Merchants</title>
-  <meta name="description" content="VibeStack builds back-office software for small and medium merchants. Enterprise-grade tools, built for everyone else.">
+  <title>Stockwise Reorder Solutions - Automated Reordering for Shopify</title>
+  <meta name="description" content="Stockwise automatically monitors your Shopify inventory, forecasts what to reorder, and creates the purchase order for you. Install free, 30 day trial.">
+  <meta property="og:title" content="Stockwise Reorder Solutions - Automated Reordering for Shopify">
+  <meta property="og:description" content="Stockwise automatically monitors your Shopify inventory, forecasts what to reorder, and creates the purchase order for you.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://vibestackapp.com/">
+  <meta property="og:image" content="https://vibestackapp.com/logo.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Stockwise Reorder Solutions - Automated Reordering for Shopify">
+  <meta name="twitter:description" content="Stockwise automatically monitors your Shopify inventory, forecasts what to reorder, and creates the purchase order for you.">
+  <meta name="twitter:image" content="https://vibestackapp.com/logo.png">
+  <link rel="icon" type="image/png" href="/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
@@ -12,8 +22,12 @@
     :root { --black: #0f0f0f; --white: #fafafa; --gray: #6b6b6b; --light: #f0ede8; --purple: #7C3AED; --border: #e0dbd3; }
     html { scroll-behavior: smooth; }
     body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--black); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 24px 48px; display: flex; justify-content: space-between; align-items: center; background: rgba(250,250,250,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
-    .logo { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 600; letter-spacing: -0.5px; color: var(--black); text-decoration: none; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 48px; display: flex; justify-content: space-between; align-items: center; background: rgba(250,250,250,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    .logo-link { text-decoration: none; display: flex; align-items: center; gap: 10px; }
+    .logo-img { width: 32px; height: 32px; border-radius: 7px; display: block; }
+    .logo-text { display: flex; flex-direction: column; line-height: 1.15; }
+    .logo-primary { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 600; letter-spacing: -0.3px; color: var(--black); }
+    .logo-sub { font-size: 10px; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray); margin-top: 2px; }
     .nav-link { font-size: 14px; color: var(--gray); text-decoration: none; letter-spacing: 0.02em; transition: color 0.2s; }
     .nav-link:hover { color: var(--black); }
     .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 120px 48px 80px; max-width: 1100px; margin: 0 auto; animation: fadeUp 0.9s ease forwards 0.2s; }
@@ -69,11 +83,12 @@
     .contact a.btn-white { display: inline-block; padding: 14px 32px; background: var(--white); color: var(--black); font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; text-decoration: none; transition: opacity 0.2s; }
     .contact a.btn-white:hover { opacity: 0.85; }
     footer { padding: 32px 48px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); }
-    footer .logo { font-size: 18px; }
+    footer .logo-img { width: 26px; height: 26px; }
+    footer .logo-primary { font-size: 15px; }
     footer p { font-size: 13px; color: var(--gray); }
     @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
     @media (max-width: 768px) {
-      nav { padding: 20px 24px; }
+      nav { padding: 16px 24px; }
       .hero { padding: 100px 24px 60px; }
       section { padding: 60px 24px; }
       .divider { margin: 0 24px; }
@@ -87,7 +102,13 @@
 </head>
 <body>
   <nav>
-    <a href="/" class="logo">VibeStack</a>
+    <a href="/" class="logo-link">
+      <img src="/logo.png" alt="Stockwise" class="logo-img">
+      <span class="logo-text">
+        <span class="logo-primary">Stockwise Reorder Solutions</span>
+        <span class="logo-sub">by VibeStack</span>
+      </span>
+    </a>
     <a href="mailto:stefan@vibestackapp.com" class="nav-link">Get in touch</a>
   </nav>
 
@@ -96,7 +117,7 @@
     <h1>Reordering,<br>fully <em>automated.</em></h1>
     <p>Stockwise continuously monitors your sales and inventory, forecasts what's about to run out, drafts the purchase order for you, and updates your Shopify inventory the moment it arrives. No spreadsheets, no manual stock checks.</p>
     <div class="hero-actions">
-      <a href="https://apps.shopify.com/vibe-stack-ai-back-office" class="btn-primary" target="_blank">Install on Shopify - Free 30-day trial</a>
+      <a href="https://apps.shopify.com/vibe-stack-ai-back-office?utm_source=vibestackapp&utm_medium=website&utm_campaign=homepage" class="btn-primary" target="_blank">Install on Shopify - Free 30-day trial</a>
       <a href="mailto:stefan@vibestackapp.com" class="btn-ghost">Get in touch</a>
     </div>
   </div>
@@ -158,7 +179,7 @@
         <p class="product-label">Available now on Shopify · $29.99/month · 30-day free trial</p>
         <h3>Stockwise Reorder Solutions</h3>
         <p>Install it and within 5 minutes you'll see exactly which products are about to stock out, how many days you have left, and what to order to cover you until your next delivery arrives.</p>
-        <a href="https://apps.shopify.com/vibe-stack-ai-back-office" class="btn-primary" style="background: var(--purple);" target="_blank">Install free on Shopify</a>
+        <a href="https://apps.shopify.com/vibe-stack-ai-back-office?utm_source=vibestackapp&utm_medium=website&utm_campaign=homepage" class="btn-primary" style="background: var(--purple);" target="_blank">Install free on Shopify</a>
       </div>
       <ul class="feature-list">
         <li><span><strong>Stockout predictions</strong> - See exactly how many days of stock remain per product, today</span></li>
@@ -265,7 +286,12 @@
   </div>
 
   <footer>
-    <a href="/" class="logo">VibeStack</a>
+    <a href="/" class="logo-link">
+      <img src="/logo.png" alt="Stockwise" class="logo-img">
+      <span class="logo-text">
+        <span class="logo-primary">Stockwise Reorder Solutions</span>
+      </span>
+    </a>
     <p>&copy; 2026 VibeStack. All rights reserved.</p>
   </footer>
 </body>
