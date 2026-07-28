@@ -50,6 +50,26 @@ nav { padding: 16px 24px; }
 footer { padding: 24px; flex-direction: column; gap: 12px; text-align: center; }
 }
 </style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0YXXYEN7YX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-0YXXYEN7YX');
+
+  document.addEventListener('click', function (e) {
+    var link = e.target.closest('a[href*="apps.shopify.com"]');
+    if (link) {
+      var url = new URL(link.href);
+      var campaign = url.searchParams.get('utm_campaign') || 'unknown';
+      gtag('event', 'install_click', {
+        campaign: campaign,
+        page_path: window.location.pathname,
+      });
+    }
+  });
+</script>
 </head>
 <body>
 
